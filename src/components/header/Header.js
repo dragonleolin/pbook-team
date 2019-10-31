@@ -208,7 +208,7 @@ export default class Header extends React.Component {
 
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/reviewer" component={Reviewer} />
+                        <Route exact path="/reviewer" component={()=><Reviewer id="111"/>} />
                         <Route exact path="/books" component={Books} />
                         <Route exact path="/activities" component={Activities} />
                         <Route exact path="/reviews" component={Reviews} />

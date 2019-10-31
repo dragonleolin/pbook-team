@@ -8,10 +8,10 @@ function App() {
   return (
     <>
       <Header />
-      <GoTop/>
+      <GoTop />
       <Footer />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
