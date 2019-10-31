@@ -11,7 +11,7 @@ import Reviews from '../../pages/Reviews'
 import Forum from '../../pages/Forum'
 import Login from '../../pages/Login'
 import Member from '../../pages/Member'
-import Game from '../../pages/Game'
+import Game from '../../pages/game/Game'
 import Logout from '../../pages/Logout'
 import Cart from '../../pages/Cart'
 import NoPage from '../../pages/nopage/NoPage'
@@ -24,10 +24,10 @@ export default class Header extends React.Component {
         super()
         this.state = {
             hasData: false,
-            id: "",
-            name: "",
-            level: "",
-            loginImg: "./images/pbook_logo_black.png",
+            id: "MR00001",
+            name: "橫山裕",
+            level: "品書學徒",
+            loginImg: "./images/yoko.jpg",
         }
     }
 
@@ -94,12 +94,12 @@ export default class Header extends React.Component {
         // 模擬會員登入後的狀態
         // setTimeout(() => {
         //     this.setState({
-        //         id: "000",
+        //         id: "MR00001",
         //         name: "橫山裕",
         //         level: "品書學徒",
         //         loginImg: "./images/yoko.jpg",
         //     })
-        // }, 5000)
+        // }, 1000)
 
         // 品書通知的東西
         // load()
@@ -137,7 +137,7 @@ export default class Header extends React.Component {
                 <img src={require('./images/header.jpg')} className="img-fluid header-img" alt="" />
 
                 <Router>
-                    <Link to="/" className="logo position-absolute pointer"></Link>
+                    <Link to="/" className="myHeaderLogo position-absolute pointer"></Link>
 
                     <div className="mwt_border"></div>
 
@@ -153,33 +153,33 @@ export default class Header extends React.Component {
                         <span className="titleEn">{this.state.id === "" ? "LOGIN" : this.state.level}</span>
                         <span className="loginImg" style={{ "backgroundImage": "url(" + require("" + this.state.loginImg) + ")" }}></span>
                         <Link to="/member" className="loginText" onClick={this.handleStopPropagation}>會員資料</Link>
-                        <Link to="/game" className="loginText" onClick={this.handleStopPropagation}>二手書配對</Link>
+                        <Link to={'/game/' + this.state.id} className="loginText" onClick={this.handleStopPropagation}>二手書配對</Link>
                         <div className="loginText" onClick={this.handleLogout}>登出</div>
                     </div>
 
 
                     <section className="d-flex justify-content-center titleButton">
-                        <Link to="/reviewer" className="text-center mx-4 pointer">
+                        <Link to="/reviewer" className="myHeaderTextCenter mx-4 pointer">
                             <span className="titleZh">書評家</span>
                             <br />
                             <span className="titleEn">REVIEWER</span>
                         </Link>
-                        <Link to="/books" className="text-center mx-4 pointer">
+                        <Link to="/books" className="myHeaderTextCenter mx-4 pointer">
                             <span className="titleZh">書籍商城</span>
                             <br />
                             <span className="titleEn">BOOKS</span>
                         </Link>
-                        <Link to="/activities" className="text-center mx-4 pointer">
+                        <Link to="/activities" className="myHeaderTextCenter mx-4 pointer">
                             <span className="titleZh">品書活動</span>
                             <br />
                             <span className="titleEn">ACTIVITIES</span>
                         </Link>
-                        <Link to="/reviews" className="text-center mx-4 pointer">
+                        <Link to="/reviews" className="myHeaderTextCenter mx-4 pointer">
                             <span className="titleZh">品書書評</span>
                             <br />
                             <span className="titleEn">REVIEWS</span>
                         </Link>
-                        <Link to="/forum" className="text-center mx-4 pointer">
+                        <Link to="/forum" className="myHeaderTextCenter mx-4 pointer">
                             <span className="titleZh">品書討論區</span>
                             <br />
                             <span className="titleEn">FORUM</span>
@@ -187,21 +187,21 @@ export default class Header extends React.Component {
                     </section>
 
                     <section className="phoneTitleHide">
-                        <div className="menu" onClick={this.handlePhoneTitle}>
+                        <div className="myHeaderMenu" onClick={this.handlePhoneTitle}>
                             <div className="bar bar1"></div>
                             <div className="bar bar2"></div>
                             <div className="bar bar3"></div>
                             <ul>
-                                <li style={{ display: phoneVisitorStatus }}><Link to="/login" className="a">登入</Link></li>
-                                <li style={{ display: phoneMemberStatus }}><Link to="/member" className="a">{this.state.name}</Link></li>
-                                <li style={{ display: phoneMemberStatus }}><Link to="/game" className="a">二手書配對</Link></li>
-                                <li><Link to="/cart" className="a">購物車</Link></li>
-                                <li><Link to="/reviewer" className="a">書評家</Link></li>
-                                <li><Link to="/books" className="a">書籍商城</Link></li>
-                                <li><Link to="/activities" className="a">品書活動</Link></li>
-                                <li><Link to="/reviews" className="a">品書書評</Link></li>
-                                <li><Link to="/forum" className="a">品書討論區</Link></li>
-                                <li style={{ display: phoneMemberStatus }}><div className="a" onClick={this.handleLogout} >登出</div></li>
+                                <li style={{ display: phoneVisitorStatus }}><Link to="/login" className="myHeaderA">登入</Link></li>
+                                <li style={{ display: phoneMemberStatus }}><Link to="/member" className="myHeaderA">{this.state.name}</Link></li>
+                                <li style={{ display: phoneMemberStatus }}><Link to={'/game/' + this.state.id} className="myHeaderA">二手書配對</Link></li>
+                                <li><Link to="/cart" className="myHeaderA">購物車</Link></li>
+                                <li><Link to="/reviewer" className="myHeaderA">書評家</Link></li>
+                                <li><Link to="/books" className="myHeaderA">書籍商城</Link></li>
+                                <li><Link to="/activities" className="myHeaderA">品書活動</Link></li>
+                                <li><Link to="/reviews" className="myHeaderA">品書書評</Link></li>
+                                <li><Link to="/forum" className="myHeaderA">品書討論區</Link></li>
+                                <li style={{ display: phoneMemberStatus }}><div className="myHeaderA" onClick={this.handleLogout} >登出</div></li>
                             </ul>
                         </div>
                     </section>
@@ -215,7 +215,7 @@ export default class Header extends React.Component {
                         <Route exact path="/forum" component={Forum} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/member" component={Member} />
-                        <Route exact path="/game" component={Game} />
+                        <Route exact path='/game/:id' component={Game} />
                         <Route exact path="/logout" component={Logout} />
                         <Route exact path="/cart" component={Cart} />
                         <Route exact component={NoPage} />

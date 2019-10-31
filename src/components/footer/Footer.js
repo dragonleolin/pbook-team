@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
     return (
         <div style={{
-            width: "100vw",
+            width: "100%",
             background: "#cde2d0",
             textAlign: "center",
             height: "35px",

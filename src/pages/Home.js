@@ -1,33 +1,27 @@
 import React from 'react'
-// import axios from 'axios'
+import Carousel from '../components/carousel/Carousel'
+import TimeLine from '../components/timeline/TimeLine'
+import Theme from '../components/theme/Theme'
+
 
 class Home extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            persons: []
+
         }
     }
 
     componentDidMount() {
-        // axios.get(`http://localhost:3001/try-db`)
-        //     .then(res => {
-        //         const persons = res.data;
-        //         //  console.log(persons);
 
-        //         this.setState({ persons: persons })
-        //     })
     }
 
     render() {
-        // console.log(this.state.persons);
-        
-
         return (
             <>
-                {/* <h1>{this.state.persons[0].sid}</h1> */}
-                <h1>首頁</h1>
-                <div style={{height:"300vh"}}></div>
+                <Carousel />
+                <TimeLine />
+                <Theme />
             </>
         )
 
