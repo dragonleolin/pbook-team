@@ -1,9 +1,10 @@
 /*
 	A. Mini Reset 
 */
-
-::before,
-::after {
+.recomend-body ::before {
+  content: '';
+}
+.recomend-body ::after {
   content: '';
 }
 
@@ -745,7 +746,7 @@ figcaption p {
 .sub-title {
   font-size: 16px !important;
   text-align: center;
-  margin:20px 0px;
+  margin: 20px 0px;
 }
 
 .recomend-body {
@@ -757,8 +758,7 @@ figcaption p {
 }
 
 @media screen and (max-width: 1200px) {
-	.recomend-body {
-		background-image: url('./images/small_recomend.png') !important;
-	  }
+  .recomend-body {
+    background-image: url('./images/small_recomend.png') !important;
+  }
 }
-

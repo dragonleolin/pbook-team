@@ -1,11 +1,20 @@
 import React from 'react'
+import Chat from '../components/chat/Chat'
 
-const Member = () => {
-    return (
-        <>
-            <h1>會員個人資料頁面</h1>
-        </>
-    )
+class Member extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+
+        }
+    }
+
+    render() {
+        return (
+            <>
+                <Chat />
+            </>
+        )
+    }
 }
-
 export default Member
