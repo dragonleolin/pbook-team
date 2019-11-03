@@ -1,5 +1,5 @@
 import React from 'react'
-import Chat from '../components/chat/Chat'
+import Sidebar from '../../components/sidebar/Sidebar'
 
 class Member extends React.Component {
     constructor() {
@@ -12,7 +12,8 @@ class Member extends React.Component {
     render() {
         return (
             <>
-                <Chat />
+            <Sidebar />
+               {/* <Header /> */}
             </>
         )
     }
