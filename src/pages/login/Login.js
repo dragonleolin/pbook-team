@@ -3,42 +3,32 @@ import './login.css'
 import { log } from 'util'
 
 class Login extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      container_back: "container_back",
-      container_front: "container_front",
-      container_right: "container_right _center",
-      container_left: "container_left _center"
-    }
+ 
+  flipSingUp = () =>{
+      let container_back = document.querySelector('.container_back')
+      let container_front = document.querySelector('.container_front')
+      container_back.classList.add('flip-to-right')
+      container_front.classList.add('_opacity')
+      container_front.classList.remove('_invisible')
+      
   }
+  flipSingIn = () =>{
+    let container_right = document.querySelector('.container_right')
+    let container_front = document.querySelector('.container_front')
+    let container_left = document.querySelector('.container_left')
+    let container_back = document.querySelector('.container_back')
+    container_right.classList.add('flip-to-left')
+    container_back.classList.remove('flip-to-right')
+    container_front.classList.add('_invisible')
+    // container_left.classList.add('_invisible')
 
-  componentDidMount() {
-
-  }
-  flipOne = () =>{
-    let newClassName = {
-      container_back: `container_back  flip-to-right`,
-      container_front: `_opacity`,
-    }
-    this.setState(newClassName)
-  }
-  flipTwo = () =>{
-    let newClassName = {
-      container_right: `container_right _center  flip-to-left`,
-      container_front: `container_front`,
-      container_left: `container_left _center`
-    }
-    this.setState(newClassName)
   }
   
 
   render() {
-
     return (
       <div className="container_login">
-        <div className="form-container">
-          <form action="#" className={this.state.container_back}>
+          <form action="#" className="container_back">
             <div className="login_title">
               <img src={require('./icon_MR_m.svg')} alt="" style={{ width: '30px' }} />
               <h2>品書人註冊</h2>
@@ -69,7 +59,8 @@ class Login extends React.Component {
               取消
             </button>
           </form>
-          <form action="#" className={this.state.container_front}>
+
+          <form action="#" className="container_front">
             <div className="login_title">
               <img src={require('./icon_MR_m.svg')} alt="" style={{ width: '30px' }} />
               <h2>品書人登入</h2>
@@ -88,24 +79,20 @@ class Login extends React.Component {
               <a href="#" className="social"></a>
             </div>
           </form>
-        </div>
 
-        <div className="form-container" data-left>
-          <div className={this.state.container_left}>
+          <div className="container_left _center">
             <img src={require('./品書logo.png')}alt="" style={{ width: '120px' }} />
             <h4 style={{ margin: '10px' }}>還沒有帳號就快來加入品書人行列</h4>
-            <button className="login_btn" onClick={this.flipOne}>
+            <button className="login_btn" onClick={this.flipSingUp}>
               品書人註冊
             </button>
           </div>
-        </div>
-        <div className="form-container">
-          <div className={this.state.container_right}>
+
+          <div className="container_right _center">
             <img src={require('./品書logo.png')} alt="" style={{ width: '120px' }} />
-            <button className="login_btn" onClick={this.flipTwo}>
+            <button className="login_btn" onClick={this.flipSingIn}>
               品書人登入
             </button>
-          </div>
         </div>
       </div>
     )
